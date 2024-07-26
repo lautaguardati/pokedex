@@ -1,0 +1,20 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "Ejemplo de pokedex para argentinaprograma.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "http-server -c-1",
+    "cy:open": "cypress open"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.13.1",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}
