@@ -1,3 +1,3 @@
 # Pokedex
 
-Ejemplo de pokedex para argentinaprograma.com
+Ejemplo de pokedex para r/argentinaprograma
