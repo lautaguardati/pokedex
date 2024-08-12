@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-const URL = "http://192.168.0.245:8080/pokedex/pokedex.html"
+const URL = "http://192.168.0.245:8080/pokedex.html"
 
 describe('Entra a la pokedex', () => {
     it('Intenta apretar el boton de ver lista más de una vez', () => {
@@ -13,7 +13,7 @@ describe('Entra a la pokedex', () => {
             cy.visit(URL);
             cy.get("#boton-ver-lista").click();
             cy.get("#lista-de-pokemons div").should('have.length', '20');
-            cy.get('#0bulbasaur').click();
+            cy.get('#bulbasaur').click();
             cy.get('#pokemon-seleccionado').should('include.text', 'bulbasaur');
             cy.get('#nombre-pokemon').find("img").should('be.visible');
             cy.get('#pokemon-seleccionado').should('include.text', 'overgrow, chlorophyll.');
@@ -26,9 +26,9 @@ describe('Entra a la pokedex', () => {
         it('Selecciona a charmander', () => {
             cy.visit(URL);
             cy.get("#boton-ver-lista").click();
-            cy.get('#0bulbasaur').click();
+            cy.get('#bulbasaur').click();
             cy.get('#pokemon-seleccionado').should('include.text', 'bulbasaur');
-            cy.get('#3charmander').click();
+            cy.get('#charmander').click();
             cy.get('#pokemon-seleccionado').should('include.text', 'charmander');
             cy.get('#pokemon-seleccionado').should('be.visible')
         })
@@ -37,14 +37,14 @@ describe('Entra a la pokedex', () => {
         it('Cambia de pagina', () => { 
             cy.visit(URL);
             cy.get("#boton-ver-lista").click();
-            cy.get('#0bulbasaur').click();
+            cy.get('#bulbasaur').click();
             cy.get('#pokemon-seleccionado').should('include.text', 'bulbasaur');
             cy.get('#pagina-siguiente').should('be.visible');
             cy.get('#pagina-siguiente').click();
-            cy.get('#0spearow').click();
+            cy.get('#spearow').click();
             cy.get('#pokemon-seleccionado').should('include.text', 'spearow');
             cy.get('#pagina-anterior').click();
-            cy.get('#3charmander').click();
+            cy.get('#charmander').click();
             cy.get('#nombre-pokemon').find("img").should('be.visible');
         })
     })
