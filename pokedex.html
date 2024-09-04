@@ -7,14 +7,14 @@
     <title>Pokedex</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel='stylesheet' type='text/css' media='screen' href='/src/pokedex.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='src/pokedex.css'>
 
 </head>
 
 <body>
     <header class="row">
         <div id="header" class="col-lg-12">
-            <img id="pokedex-icono" src="/img/pokedex.jpg" class="img-fluid">
+            <img id="pokedex-icono" src="img/pokedex.jpg" class="img-fluid">
             <button id="boton-ver-lista" type="button" class="btn btn-primary">Ver lista de pokemones</button>
         </div>
     </header>
@@ -35,16 +35,25 @@
     <footer>
         <nav id="barra-de-navegacion" hidden>
             <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a id="pagina-anterior" class="page-link" href="#">Previous</a>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" id="anterior-pagina" aria-label="Previous">&laquo;
+                    </a>
                 </li>
+                <li class="page-item active"><a id="pagina-1" class="page-link" href="#" data-page="1">1</a></li>
+                <li class="page-item"><a id="pagina-2" class="page-link" href="#" data-page="2">2</a></li>
+                <li class="page-item"><a id="pagina-3" class="page-link" href="#" data-page="3">3</a></li>
+                <li class="page-item"><a id="pagina-4" class="page-link" href="#" data-page="4">4</a></li>
+                <li class="page-item"><a id="pagina-5" class="page-link" href="#" data-page="5">5</a></li>
+                <li class="page-item"><a id="pagina-6" class="page-link" href="#" data-page="6">6</a></li>
+                <li class="page-item"><a id="pagina-7" class="page-link" href="#" data-page="7">7</a></li>
                 <li class="page-item">
-                    <a id="pagina-siguiente" class="page-link" href="#">Next</a>
+                    <a class="page-link" href="#" id="siguiente-pagina" aria-label="Next">&raquo;
+                    </a>
                 </li>
             </ul>
         </nav>
+        </nav>
     </footer>
-
 
     <script src='src/index.js' type="module"></script>
 </body>
