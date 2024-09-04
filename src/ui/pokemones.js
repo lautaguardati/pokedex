@@ -1,39 +1,37 @@
-import {
-  obtenerImagen,
-  obtenerInformacionDePokemon,
-} from '../api/apiCalls.js';
+import { buscarImagenDePokemon } from '../services/general.js';
 
-export default function mostrarListaDePokemones(pokemones) {
+const $pokemonSeleccionado = document.querySelector('#pokemon-seleccionado');
+
+export function mostrarListaDePokemones(pokemones, callBackBuscarPokemon) {
   document.querySelector('#lista-de-pokemons').textContent = '';
   pokemones.forEach((pokemon) => {
     const $itemPokemon = document.createElement('div');
     $itemPokemon.id = pokemon.name;
     $itemPokemon.textContent = pokemon.name;
     $itemPokemon.dataset.url = pokemon.url;
-    $itemPokemon.addEventListener('click', buscarInformacionDePokemon);
-
+    $itemPokemon.addEventListener('click', callBackBuscarPokemon);
     document.querySelector('#lista-de-pokemons').appendChild($itemPokemon);
   });
 }
 
-async function buscarInformacionDePokemon(e) {
-  limpiarPokemonSeleccionado();
-  mostrarCaracteristicas(await obtenerInformacionDePokemon(e.target.dataset.url));
+export function mostrarTextoDeEspera() {
+  document.querySelector('#lista-de-pokemons').textContent = '';
+  document.querySelector('#lista-de-pokemons').textContent = 'Cargando...';
 }
 
-async function mostrarCaracteristicas(caracteristicas) {
+export async function mostrarCaracteristicas(caracteristicas) {
+  limpiarPokemonSeleccionado();
+  quitarTextoCargando();
   mostrarNombre(caracteristicas.name);
-  mostrarImagen(await obtenerImagen(caracteristicas.sprites.front_default));
   mostrarHabilidades(caracteristicas.abilities);
   mostrarExperiencia(caracteristicas.base_experience);
   mostrarAltura(caracteristicas.height);
   mostrarPeso(caracteristicas.weight);
   mostrarTipos(caracteristicas.types);
+  mostrarImagen(await buscarImagenDePokemon(caracteristicas));
 }
 
-const $pokemonSeleccionado = document.querySelector('#pokemon-seleccionado');
-
-function mostrarNombre(nombre) {
+export function mostrarNombre(nombre) {
   const $nombrePokemon = document.createElement('div');
   $nombrePokemon.id = 'nombre-pokemon';
   $nombrePokemon.textContent = `${nombre} `;
@@ -41,14 +39,14 @@ function mostrarNombre(nombre) {
   $nombrePokemon.appendChild(document.createElement('br'));
 }
 
-function mostrarImagen(imagen) {
+export function mostrarImagen(imagen) {
   const $imagenPokemon = document.createElement('img');
   const objectURL = URL.createObjectURL(imagen);
   $imagenPokemon.src = objectURL;
   document.querySelector('#nombre-pokemon').appendChild($imagenPokemon);
 }
 
-function mostrarHabilidades(habilidades) {
+export function mostrarHabilidades(habilidades) {
   const $nodoHabilidades = document.createElement('p');
   $nodoHabilidades.textContent = 'Habilidades:';
 
@@ -62,25 +60,25 @@ function mostrarHabilidades(habilidades) {
   $pokemonSeleccionado.appendChild($nodoHabilidades);
 }
 
-function mostrarExperiencia(experiencia) {
+export function mostrarExperiencia(experiencia) {
   const $nodoExperiencia = document.createElement('p');
   $nodoExperiencia.textContent = `Experiencia: ${experiencia}`;
   $pokemonSeleccionado.appendChild($nodoExperiencia);
 }
 
-function mostrarAltura(altura) {
+export function mostrarAltura(altura) {
   const $nodoAltura = document.createElement('p');
   $nodoAltura.textContent = `Altura: ${altura}`;
   $pokemonSeleccionado.appendChild($nodoAltura);
 }
 
-function mostrarPeso(peso) {
+export function mostrarPeso(peso) {
   const $nodoPeso = document.createElement('p');
   $nodoPeso.textContent = `Peso: ${peso}`;
   $pokemonSeleccionado.appendChild($nodoPeso);
 }
 
-function mostrarTipos(tipos) {
+export function mostrarTipos(tipos) {
   const $nodoTipos = document.createElement('p');
   $nodoTipos.textContent = 'Tipo: ';
 
@@ -95,5 +93,10 @@ function mostrarTipos(tipos) {
 }
 
 function limpiarPokemonSeleccionado() {
+  $pokemonSeleccionado.textContent = '';
+  $pokemonSeleccionado.textContent = 'Cargando...';
+}
+
+function quitarTextoCargando() {
   $pokemonSeleccionado.textContent = '';
 }

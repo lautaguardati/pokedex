@@ -39,11 +39,11 @@ describe('Entra a la pokedex', () => {
             cy.get("#boton-ver-lista").click();
             cy.get('#bulbasaur').click();
             cy.get('#pokemon-seleccionado').should('include.text', 'bulbasaur');
-            cy.get('#pagina-siguiente').should('be.visible');
-            cy.get('#pagina-siguiente').click();
+            cy.get('#siguiente-pagina').should('be.visible');
+            cy.get('#siguiente-pagina').click();
             cy.get('#spearow').click();
             cy.get('#pokemon-seleccionado').should('include.text', 'spearow');
-            cy.get('#pagina-anterior').click();
+            cy.get('#anterior-pagina').click();
             cy.get('#charmander').click();
             cy.get('#nombre-pokemon').find("img").should('be.visible');
         })
