@@ -37,23 +37,17 @@ export default function manejarCambioDePagina(e) {
 
 function cambiarNumerosDeLasPaginas(paginaSeleccionada) {
   resaltarPaginaActiva(4);
-  $barraDeNavegacion.querySelector('#pagina-4').textContent = paginaSeleccionada;
-  $barraDeNavegacion.querySelector('#pagina-1').textContent = paginaSeleccionada - 3;
-  $barraDeNavegacion.querySelector('#pagina-2').textContent = paginaSeleccionada - 2;
-  $barraDeNavegacion.querySelector('#pagina-3').textContent = paginaSeleccionada - 1;
-  $barraDeNavegacion.querySelector('#pagina-5').textContent = paginaSeleccionada + 1;
-  $barraDeNavegacion.querySelector('#pagina-6').textContent = paginaSeleccionada + 2;
-  $barraDeNavegacion.querySelector('#pagina-7').textContent = paginaSeleccionada + 3;
+  let j = -3;
+  for (let i = 1; i <= 7; i += 1) {
+    $barraDeNavegacion.querySelector(`#pagina-${i}`).textContent = paginaSeleccionada + j;
+    j += 1;
+  }
 }
 
 function acomodarNumerosMinimosDeLasPaginas() {
-  $barraDeNavegacion.querySelector('#pagina-1').textContent = 1;
-  $barraDeNavegacion.querySelector('#pagina-2').textContent = 2;
-  $barraDeNavegacion.querySelector('#pagina-3').textContent = 3;
-  $barraDeNavegacion.querySelector('#pagina-4').textContent = 4;
-  $barraDeNavegacion.querySelector('#pagina-5').textContent = 5;
-  $barraDeNavegacion.querySelector('#pagina-6').textContent = 6;
-  $barraDeNavegacion.querySelector('#pagina-7').textContent = 7;
+  for (let i = 1; i <= 7; i += 1) {
+    $barraDeNavegacion.querySelector(`#pagina-${i}`).textContent = i;
+  }
 }
 
 function manejarCambioUnicoDePagina(e) {
